@@ -1,0 +1,18 @@
+#nullable enable
+Robotico.Domain.Entity<TId>
+Robotico.Domain.Entity<TId>.Entity(TId id) -> void
+Robotico.Domain.Entity<TId>.Id.get -> TId
+override Robotico.Domain.Entity<TId>.Equals(object? obj) -> bool
+override Robotico.Domain.Entity<TId>.GetHashCode() -> int
+static Robotico.Domain.Entity<TId>.operator ==(Robotico.Domain.Entity<TId>? left, Robotico.Domain.Entity<TId>? right) -> bool
+static Robotico.Domain.Entity<TId>.operator !=(Robotico.Domain.Entity<TId>? left, Robotico.Domain.Entity<TId>? right) -> bool
+Robotico.Domain.IEntity<TId>
+Robotico.Domain.IEntity<TId>.Id.get -> TId
+Robotico.Domain.ValueObject
+Robotico.Domain.ValueObject.ValueObject() -> void
+abstract Robotico.Domain.ValueObject.GetEqualityComponents() -> System.Collections.Generic.IEnumerable<object?>!
+Robotico.Domain.ValueObject.Equals(Robotico.Domain.ValueObject? other) -> bool
+override Robotico.Domain.ValueObject.Equals(object? obj) -> bool
+override Robotico.Domain.ValueObject.GetHashCode() -> int
+static Robotico.Domain.ValueObject.operator ==(Robotico.Domain.ValueObject? left, Robotico.Domain.ValueObject? right) -> bool
+static Robotico.Domain.ValueObject.operator !=(Robotico.Domain.ValueObject? left, Robotico.Domain.ValueObject? right) -> bool

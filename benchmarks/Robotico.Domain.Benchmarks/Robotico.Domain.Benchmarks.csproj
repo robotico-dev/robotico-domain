@@ -12,12 +12,12 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <PackageId>Robotico.Domain.Benchmarks</PackageId>
-    <!-- CA1707: Benchmark method names use underscores. CA1515: Public benchmark class for BenchmarkDotNet. -->
-    <NoWarn>$(NoWarn);CA1707;CA1515;CA1822</NoWarn>
+    <!-- CA1707: Benchmark method names use underscores. CA1515: Public benchmark class for BenchmarkDotNet. IDE0005: Requires GenerateDocumentationFile when enabled; benchmarks do not generate docs. -->
+    <NoWarn>$(NoWarn);CA1707;CA1515;CA1822;IDE0005</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.15.6" />
+    <PackageReference Include="BenchmarkDotNet" />
   </ItemGroup>
 
   <ItemGroup>

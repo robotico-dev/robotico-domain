@@ -14,6 +14,7 @@ public abstract class Entity<TId> : IEntity<TId>
     public TId Id { get; }
 
     /// <summary>Initializes the entity with the given identifier.</summary>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
     protected Entity(TId id)
     {
         ArgumentNullException.ThrowIfNull(id);
@@ -21,6 +22,7 @@ public abstract class Entity<TId> : IEntity<TId>
     }
 
     /// <inheritdoc />
+    /// <remarks>Returns false when <paramref name="obj"/> is null; otherwise compares by <see cref="Id"/> (same Id implies equality).</remarks>
     public override bool Equals(object? obj) => obj is Entity<TId> other && Id.Equals(other.Id);
 
     /// <inheritdoc />

@@ -5,6 +5,8 @@ DDD building blocks for .NET 8 and .NET 10. **Zero package dependencies.** Provi
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![.NET 10](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/download/dotnet/10.0)
 [![C#](https://img.shields.io/badge/C%23-12-239120?logo=csharp)](https://learn.microsoft.com/en-us/dotnet/csharp/)
+[![GitHub Packages](https://img.shields.io/badge/GitHub%20Packages-Robotico.Domain-blue?logo=github)](https://github.com/robotico-dev/robotico-domain/packages)
+[![Build](https://github.com/robotico-dev/robotico-domain/actions/workflows/publish.yml/badge.svg)](https://github.com/robotico-dev/robotico-domain/actions/workflows/publish.yml)
 
 ## Features
 
@@ -67,9 +69,11 @@ Assert.True(o1 == o2);  // same Id ⇒ same entity
 - **ValueObject** — For values defined by their attributes (Money, Address, DateRange). Same components ⇒ equal.
 - **IEntity&lt;TId&gt;** / **Entity&lt;TId&gt;** — For objects with stable identity (Order, User). Same Id ⇒ same entity; other attributes can change.
 
+See the design doc (`docs/design.adoc`) for full guidance.
+
 ## Documentation
 
-Detailed design docs (AsciiDoc) are in the `docs/` folder:
+Full contract and design: see **`docs/design.adoc`**. Detailed design docs (AsciiDoc) are in the `docs/` folder:
 
 - **Design** (`docs/design.adoc`) — When to use ValueObject vs Entity, GetEqualityComponents, identity.
 
@@ -79,6 +83,10 @@ To build HTML from the AsciiDoc sources (e.g. with Asciidoctor):
 asciidoctor docs/index.adoc -o docs/index.html
 asciidoctor docs/design.adoc -o docs/design.html
 ```
+
+## Versioning
+
+We follow [Semantic Versioning](https://semver.org/). Version **1.0.0** is the first stable release. No breaking changes in minor/patch versions.
 
 ## Building, testing, and benchmarks
 
@@ -102,15 +110,13 @@ Optional CI gate (fail if line coverage below threshold):
 dotnet test tests/Robotico.Domain.Tests/Robotico.Domain.Tests.csproj -c Release --collect:"XPlat Code Coverage" /p:CollectCoverage=true /p:Threshold=90 /p:ThresholdType=line
 ```
 
-Run benchmarks (BenchmarkDotNet):
+Run benchmarks (BenchmarkDotNet). **Recommended: run benchmarks in CI to catch performance regressions.**
 
 ```bash
 dotnet run -c Release -p benchmarks/Robotico.Domain.Benchmarks/Robotico.Domain.Benchmarks.csproj -- --filter "*"
 ```
 
-## Versioning
-
-We follow [Semantic Versioning](https://semver.org/). No breaking changes in minor/patch versions.
+Or open the solution in your IDE and build from there.
 
 ## License
 

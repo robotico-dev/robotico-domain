@@ -5,14 +5,19 @@
     <PackageId>Robotico.Domain.Tests</PackageId>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <!-- CA1707/CA1515: Test naming and discovery. CA1508: Assert.True(left==right) in null/equality tests are false positives (analyzer sees constants). -->
-    <NoWarn>$(NoWarn);CA1707;CA1515;CA1508</NoWarn>
+    <!-- CA1707/CA1515: Test naming. CA1508: Equality/reflexivity tests (left==right, a==a, Equals(null)) are intentional. IDE0005: Requires GenerateDocumentationFile when enabled; tests do not generate docs. -->
+    <NoWarn>$(NoWarn);CA1707;CA1515;CA1508;IDE0005</NoWarn>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <CoverletOutputFormat>cobertura</CoverletOutputFormat>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="xunit" Version="2.9.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageReference Include="coverlet.collector">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Robotico.Domain\Robotico.Domain.csproj" />

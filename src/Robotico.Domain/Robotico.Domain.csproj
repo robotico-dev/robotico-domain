@@ -2,6 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Robotico.Domain</RootNamespace>
     <AssemblyName>Robotico.Domain</AssemblyName>
+    <PackageIcon>logosquare.png</PackageIcon>
     <PackageProjectUrl>https://github.com/robotico-dev/robotico-domain-csharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/robotico-dev/robotico-domain-csharp</RepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
@@ -11,8 +12,16 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" Visible="false" />
+    <!-- Package icon: single source at repo assets. -->
+    <None Include="..\..\assets\logosquare.png" Pack="true" PackagePath="\" Link="logosquare.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+  </ItemGroup>
+  <!-- IDE0130 (namespace match folder) needs these for command-line builds. -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="RootNamespace" />
+    <CompilerVisibleProperty Include="ProjectDir" />
   </ItemGroup>
 </Project>
