@@ -11,7 +11,7 @@ public sealed class DomainLawsTests
     public void Entity_equality_is_reflexive()
     {
         Guid id = Guid.NewGuid();
-        SampleEntity a = new SampleEntity(id, "A");
+        SampleEntity a = new(id, "A");
         Assert.True(a.Equals(a));
 #pragma warning disable CS1718, CA1508 // Comparison to same variable / dead conditional - intentional reflexivity test
         Assert.True(a == a);
@@ -22,8 +22,8 @@ public sealed class DomainLawsTests
     public void Entity_equality_is_symmetric()
     {
         Guid id = Guid.NewGuid();
-        SampleEntity a = new SampleEntity(id, "A");
-        SampleEntity b = new SampleEntity(id, "B");
+        SampleEntity a = new(id, "A");
+        SampleEntity b = new(id, "B");
         Assert.True(a.Equals(b));
         Assert.True(b.Equals(a));
         Assert.True(a == b);
@@ -34,9 +34,9 @@ public sealed class DomainLawsTests
     public void Entity_equality_is_transitive()
     {
         Guid id = Guid.NewGuid();
-        SampleEntity a = new SampleEntity(id, "A");
-        SampleEntity b = new SampleEntity(id, "B");
-        SampleEntity c = new SampleEntity(id, "C");
+        SampleEntity a = new(id, "A");
+        SampleEntity b = new(id, "B");
+        SampleEntity c = new(id, "C");
         Assert.True(a.Equals(b));
         Assert.True(b.Equals(c));
         Assert.True(a.Equals(c));
@@ -47,8 +47,8 @@ public sealed class DomainLawsTests
     public void Entity_equal_instances_have_equal_GetHashCode()
     {
         Guid id = Guid.NewGuid();
-        SampleEntity a = new SampleEntity(id, "A");
-        SampleEntity b = new SampleEntity(id, "B");
+        SampleEntity a = new(id, "A");
+        SampleEntity b = new(id, "B");
         Assert.Equal(a.GetHashCode(), b.GetHashCode());
     }
 
