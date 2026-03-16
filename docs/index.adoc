@@ -1,0 +1,24 @@
+= Robotico.Domain — Documentation
+:toc: left
+:toclevels: 3
+:sectnums:
+:icons: font
+
+DDD building blocks for .NET. ValueObject, IEntity&lt;TId&gt;, Entity&lt;TId&gt;. Zero dependencies.
+
+== Quick links
+
+* link:design.adoc[Design] — When to use ValueObject vs Entity, GetEqualityComponents, identity.
+
+== Building the docs
+
+These docs are written in AsciiDoc. To produce HTML (e.g. with Asciidoctor):
+
+----
+asciidoctor docs/index.adoc -o docs/index.html
+asciidoctor docs/design.adoc -o docs/design.html
+----
+
+== Repository
+
+* Package: NuGet (Robotico.Domain)

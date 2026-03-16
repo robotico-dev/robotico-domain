@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Robotico.Domain.Benchmarks</RootNamespace>
+    <AssemblyName>Robotico.Domain.Benchmarks</AssemblyName>
+    <IsPackable>false</IsPackable>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <PackageId>Robotico.Domain.Benchmarks</PackageId>
+    <!-- CA1707: Benchmark method names use underscores. CA1515: Public benchmark class for BenchmarkDotNet. -->
+    <NoWarn>$(NoWarn);CA1707;CA1515;CA1822</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Robotico.Domain\Robotico.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,45 @@
+= Robotico.Domain — Design
+:toc: left
+:toclevels: 3
+:sectnums:
+:icons: font
+
+This document explains the design decisions behind Robotico.Domain: when to use ValueObject vs Entity, how equality works, and identity.
+
+== Design principles
+
+=== ValueObject — equality by components
+
+Value objects are defined by their *attributes*. Two value objects with the same components are considered equal:
+
+* Override `GetEqualityComponents()` and yield the fields that define equality.
+* Use `yield return` to avoid allocating collections.
+* Equality and hashing are derived from those components; null-safe `==` and `!=` operators.
+
+Use for: Money, Address, DateRange, or any value that has no identity beyond its attributes.
+
+=== Entity — equality by identity
+
+Entities have a *stable identity* over time. Two entities are equal if and only if their `Id` is equal:
+
+* Implement `IEntity<TId>` or inherit from `Entity<TId>`.
+* `TId` must be non-null (e.g. `Guid`, `int`, or a value-object id type).
+* The protected constructor validates `id` with `ArgumentNullException.ThrowIfNull(id)` when `TId` is a reference type.
+
+Use for: Order, User, AggregateRoot — any object whose identity matters and whose attributes may change.
+
+== When to use which
+
+| Type | Use when |
+|------|----------|
+| ValueObject | The object is defined only by its attributes; same components ⇒ equal. |
+| IEntity&lt;TId&gt; / Entity&lt;TId&gt; | The object has a stable identity; same Id ⇒ same entity. |
+
+== API notes
+
+* **ValueObject** — Abstract base; override `GetEqualityComponents()`. Operators `==` and `!=` are null-safe (both null ⇒ equal; one null ⇒ not equal).
+* **Entity&lt;TId&gt;** — Abstract base implementing `IEntity<TId>`; equality and `GetHashCode()` by `Id`. Operators are null-safe.
+
+== Related
+
+* link:../README.md[README] — quick start and feature list.

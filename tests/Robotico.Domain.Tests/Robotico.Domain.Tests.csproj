@@ -5,7 +5,8 @@
     <PackageId>Robotico.Domain.Tests</PackageId>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <NoWarn>$(NoWarn);CA1707;CS1591;CA1515</NoWarn>
+    <!-- CA1707/CA1515: Test naming and discovery. CA1508: Assert.True(left==right) in null/equality tests are false positives (analyzer sees constants). -->
+    <NoWarn>$(NoWarn);CA1707;CA1515;CA1508</NoWarn>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
