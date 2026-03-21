@@ -1,27 +1,17 @@
 using BenchmarkDotNet.Attributes;
-using Robotico.Domain;
 
 namespace Robotico.Domain.Benchmarks;
 
-public sealed class BenchmarkValueObject : ValueObject
-{
-    public int X { get; init; }
-    public string Y { get; init; } = string.Empty;
-
-    protected override IEnumerable<object?> GetEqualityComponents()
-    {
-        yield return X;
-        yield return Y;
-    }
-}
-
+/// <summary>
+/// Benchmarks for <see cref="BenchmarkValueObject"/> equality and hash.
+/// </summary>
 [MemoryDiagnoser]
 [ShortRunJob]
-public class ValueObjectEqualityBenchmarks
+public sealed class ValueObjectEqualityBenchmarks
 {
-    private static readonly BenchmarkValueObject A = new() { X = 1, Y = "a" };
-    private static readonly BenchmarkValueObject B = new() { X = 1, Y = "a" };
-    private static readonly BenchmarkValueObject C = new() { X = 2, Y = "b" };
+    private static readonly BenchmarkValueObject A = new BenchmarkValueObject { X = 1, Y = "a" };
+    private static readonly BenchmarkValueObject B = new BenchmarkValueObject { X = 1, Y = "a" };
+    private static readonly BenchmarkValueObject C = new BenchmarkValueObject { X = 2, Y = "b" };
 
     [Benchmark(Baseline = true)]
     public bool ValueObject_Equals_same_components()
