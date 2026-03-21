@@ -34,7 +34,7 @@ jobs:
 
       - name: Run benchmarks (ShortRun)
         run: |
-          dotnet run -c Release -p benchmarks/Robotico.Domain.Benchmarks/Robotico.Domain.Benchmarks.csproj --no-build -- \
+          dotnet run --project benchmarks/Robotico.Domain.Benchmarks/Robotico.Domain.Benchmarks.csproj -c Release -f net8.0 --no-build -- \
             --filter "*" --job ShortRun
         id: run-benchmarks
 

@@ -113,7 +113,7 @@ dotnet test tests/Robotico.Domain.Tests/Robotico.Domain.Tests.csproj -c Release 
 Run benchmarks (BenchmarkDotNet). **Recommended: run benchmarks in CI to catch performance regressions.**
 
 ```bash
-dotnet run -c Release -p benchmarks/Robotico.Domain.Benchmarks/Robotico.Domain.Benchmarks.csproj -- --filter "*"
+dotnet run --project benchmarks/Robotico.Domain.Benchmarks/Robotico.Domain.Benchmarks.csproj -c Release -f net8.0 -- --filter "*"
 ```
 
 Or open the solution in your IDE and build from there.
